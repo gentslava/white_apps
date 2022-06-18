@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+        'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: black;
+    color: white;
+
+    @media print {
+        color: black;
+        background-color: initial;
+    }
+}
+
+@media print {
+    @page {
+        margin: 1cm 1.25cm 1.75cm 2.25cm;
+    }
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
