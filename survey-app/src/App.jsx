@@ -60,5 +60,5 @@ const App = () => {
             </form>
         </div>
     );
-}
+};
 export default App;
