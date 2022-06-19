@@ -49,7 +49,7 @@ const App = () => {
                     />
                     <div className='form__bottom'>
                         <p><b>Насколько мне известно, я верно ответил(а) на все вопросы анкеты</b></p>
-                        <p>Дата {today.toLocaleDateString("ru-RU")}</p>
+                        <p className='form__bottom-data'>Дата {today.toLocaleDateString("ru-RU")}</p>
                         <div>
                             <p>Подпись врача &nbsp;<span>____________/___________________ /</span></p>
                             <p>Подпись &nbsp;<span>____________/___________________ /</span></p>
