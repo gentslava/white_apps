@@ -2,29 +2,41 @@ import QrScanner from 'qr-scanner';
 import { useEffect } from 'react';
 
 const videoStyle = {
-    maxWidth: '100vw',
+    maxWidth: '100%',
     transform: 'scaleX(-1)',
 }
 
-const QRScanner = () => {
+const QRScanner = ({ setTextQR, scanning }) => {
+    const display = scanning ? 'initial' : 'none';
+
     useEffect(() => {
-        if (document.querySelector('.scan-region-highlight')) return;
-        console.log('Init')
-        const video = document.querySelector('#qr-video');
-        const scanner = new QrScanner(
-            video,
-            (result) => console.log(result),
-            {
-                highlightScanRegion: true,
-                highlightCodeOutline: true,
+        if (scanning) {
+            if (document.querySelector('.scan-region-highlight')) return;
+            console.log('Init')
+            const video = document.querySelector('#qr-video');
+            const scanner = new QrScanner(
+                video,
+                (result) => setTextQR(result),
+                {
+                    highlightScanRegion: true,
+                    highlightCodeOutline: true,
+                }
+            );
+            scanner.setInversionMode('both');
+            scanner.start();
+            window.scanner = scanner;
+        } else {
+            if (window.scanner) {
+                const scanner = window.scanner;
+                scanner.stop();
+                scanner.destroy();
+                window.scanner = null;
             }
-        );
-        scanner.setInversionMode('both');
-        scanner.start();
-    }, []);
+        }
+    });
 
     return (
-        <video id='qr-video' style={videoStyle} />
+        <video id='qr-video' style={{ ...videoStyle, display }} />
     );
 };
 export default QRScanner;
