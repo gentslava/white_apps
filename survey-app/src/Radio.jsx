@@ -1,4 +1,4 @@
-const Checkbox = ({
+const Radio = ({
     number,
     index,
     required,
@@ -18,4 +18,4 @@ const Checkbox = ({
         <label htmlFor={`answer-${number}-${index}`}>{title}</label>
     </>
 );
-export default Checkbox;
+export default Radio;
