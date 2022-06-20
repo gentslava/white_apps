@@ -1,4 +1,6 @@
-import Question from "./Question";
+/* eslint-disable react/no-array-index-key */
+import React from 'react';
+import Question from './Question';
 
 const Survey = ({ questionnaire }) => questionnaire.map(
     (question, index) => (
@@ -7,6 +9,6 @@ const Survey = ({ questionnaire }) => questionnaire.map(
             question={question}
             number={index}
         />
-    )
+    ),
 );
 export default Survey;

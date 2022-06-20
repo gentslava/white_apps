@@ -47,7 +47,7 @@ const questionnaire = [
             {
                 title: 'Свой вариант',
                 needsText: true,
-                textTitle: 'Напишите'
+                textTitle: 'Напишите',
             },
         ],
         required: true,

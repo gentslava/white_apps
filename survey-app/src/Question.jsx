@@ -1,5 +1,7 @@
-import { useState } from 'react';
-import Radio from './Radio';
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import React, { useState } from 'react';
+import Radio from './RadioButton';
 
 const Question = ({ question, number }) => {
     const [value, setValue] = useState(null);
@@ -23,7 +25,7 @@ const Question = ({ question, number }) => {
                                         required={question.required}
                                         needsText={answer.needsText}
                                         title={answer.title}
-                                        value={value}
+                                        // value={value}
                                         setValue={setValue}
                                     />
                                 ))
@@ -91,7 +93,7 @@ const Question = ({ question, number }) => {
                                                 required={question.required}
                                                 needsText={answer.needsText}
                                                 title={answer.title}
-                                                value={value}
+                                                // value={value}
                                                 setValue={setValue}
                                             />
                                         ))
