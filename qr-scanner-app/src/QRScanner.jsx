@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/media-has-caption */
+import React, { useEffect } from 'react';
 import QrScanner from 'qr-scanner';
-import { useEffect } from 'react';
 
 const videoStyle = {
     maxWidth: '100%',
     transform: 'scaleX(-1)',
-}
+};
 
 const QRScanner = ({ setTextQR, scanning }) => {
     const display = scanning ? 'initial' : 'none';
@@ -12,7 +13,6 @@ const QRScanner = ({ setTextQR, scanning }) => {
     useEffect(() => {
         if (scanning) {
             if (document.querySelector('.scan-region-highlight')) return;
-            console.log('Init')
             const video = document.querySelector('#qr-video');
             const scanner = new QrScanner(
                 video,
@@ -20,18 +20,16 @@ const QRScanner = ({ setTextQR, scanning }) => {
                 {
                     highlightScanRegion: true,
                     highlightCodeOutline: true,
-                }
+                },
             );
             scanner.setInversionMode('both');
             scanner.start();
             window.scanner = scanner;
-        } else {
-            if (window.scanner) {
-                const scanner = window.scanner;
-                scanner.stop();
-                scanner.destroy();
-                window.scanner = null;
-            }
+        } else if (window.scanner) {
+            const { scanner } = window;
+            scanner.stop();
+            scanner.destroy();
+            window.scanner = null;
         }
     });
 

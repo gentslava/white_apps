@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
 import keys from './keys';
 import QRScanner from './QRScanner';
@@ -6,7 +6,7 @@ import actionRSA from './RSA';
 
 const App = () => {
     const [textQR, setTextQR] = useState('');
-    const [result, setResult] = useState(null)
+    const [result, setResult] = useState(null);
 
     useEffect(() => {
         actionRSA(textQR, keys.privateKey)
