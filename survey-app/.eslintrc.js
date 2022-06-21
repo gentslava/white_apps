@@ -18,9 +18,7 @@ module.exports = {
         'react',
     ],
     rules: {
-        'default-param-last': 'off',
-        'import/prefer-default-export': 'off',
-        'import/no-extraneous-dependencies': 'off',
+        'default-param-last': 'warn',
         indent: [
             'error',
             4,
@@ -56,7 +54,6 @@ module.exports = {
                 },
             },
         ],
-        'react/destructuring-assignment': 'off',
         'react/function-component-definition': [
             'error',
             {
@@ -65,10 +62,9 @@ module.exports = {
             },
         ],
         'react/jsx-indent': ['error', 4],
-        'react/jsx-indent-props': 'off',
+        'react/jsx-indent-props': ['error', 4],
         'react/no-array-index-key': 'warn',
         'react/prop-types': 'off',
-        'react/jsx-fragments': ['error', 'syntax'],
     },
 //   settings: {
 //     'import/resolver': {
