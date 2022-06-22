@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import './App.scss';
 // import Home from './Home';
+import Home from './Home';
 import HealthSurvey from './HealthSurvey';
 import Agreement from './Agreement';
 
@@ -15,11 +16,15 @@ const App = () => (
             <Routes>
                 <Route
                     path='/'
-                    element={<Agreement />}
+                    element={<Home />}
                 />
                 <Route
                     path='/health-survey'
                     element={<HealthSurvey />}
+                />
+                <Route
+                    path='/agreement'
+                    element={<Agreement />}
                 />
             </Routes>
         </div>
