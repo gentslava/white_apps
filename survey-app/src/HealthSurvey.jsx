@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
 import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
 import Logo from './Logo';
 import questionnaire from './questionnaire';
@@ -21,11 +21,11 @@ export default () => {
 
     return (
         <>
-            <header>
+            {/* <header>
                 <Link to='/'>
                     ⬅️ Назад
                 </Link>
-            </header>
+            </header> */}
             <form className='form' onSubmit={submitHandler}>
                 <div className='form__content' ref={componentRef}>
                     <Logo />
@@ -83,6 +83,7 @@ export default () => {
                             </p>
                         </div>
                     </div>
+                    <div className='form__footer'>UNCLASSIFIED</div>
                 </div>
                 <input className='form__submit' type='submit' value='Готово' />
             </form>

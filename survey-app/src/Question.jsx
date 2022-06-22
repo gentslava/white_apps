@@ -6,6 +6,12 @@ import Radio from './RadioButton';
 const Question = ({ question, number }) => {
     const [value, setValue] = useState(null);
 
+    if (question.break) {
+        return (
+            <div className='break-page' />
+        );
+    }
+
     return (
         <fieldset className='form__answer'>
             <div className='form__table-row'>

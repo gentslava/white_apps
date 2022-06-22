@@ -4,8 +4,6 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
 import Logo from './Logo';
-import questionnaire from './questionnaire';
-import Survey from './Survey';
 
 export default () => {
     const today = new Date();
@@ -29,6 +27,7 @@ export default () => {
             <form className='form' onSubmit={submitHandler}>
                 <div className='form__content' ref={componentRef}>
                     <Logo />
+                    <p>Приложение к медицинской карте</p>
                     <p>
                         Информированное добровольное согласие на виды медицинских вмешательств, включенные
                         в Перечень определенных видов медицинских вмешательств, на которые граждане дают
@@ -40,9 +39,6 @@ export default () => {
                         сообщена вся необходимая информация о моем предстоящем лечении и что я согласен (согласна) с названными мне условиями проведения лечения.
                         Данный документ является необходимым предварительным условием (разрешением) начала медицинского вмешательства.
                     </p>
-                    <Survey
-                        questionnaire={questionnaire}
-                    />
                     <div className='form__bottom'>
                         <p><b>Насколько мне известно, я верно ответил(а) на все вопросы анкеты</b></p>
                         <p className='form__bottom-data'>

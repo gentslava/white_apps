@@ -278,6 +278,9 @@ const questionnaire = [
         ],
         required: true,
     },
+    // {
+    //     break: true,
+    // },
     {
         question: 'Остеопороз',
         type: 'radio',

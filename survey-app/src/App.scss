@@ -31,6 +31,16 @@ a {
     max-width: 620px;
     box-sizing: border-box;
     text-align: center;
+
+    &:active {
+        background: #282828;
+    }
+
+    &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
 }
 
 .form {
@@ -304,6 +314,30 @@ select {
 
         + .form__subanswer label {
             display: none;
+        }
+    }
+}
+
+@media screen {
+    .form__footer {
+        display: none;
+    }
+}
+@media print {
+    .form__footer {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        background: white;
+        // margin-bottom: -1.75cm;
+        // margin-left: -2.25cm;
+    }
+
+    .break-page {
+        margin-bottom: 100%;
+
+        + .form__answer {
+            padding-top: 1cm;
         }
     }
 }
