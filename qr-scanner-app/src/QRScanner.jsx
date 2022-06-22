@@ -3,7 +3,11 @@ import React, { useEffect } from 'react';
 import QrScanner from 'qr-scanner';
 
 const videoStyle = {
-    maxWidth: '100%',
+    width: '100vmin',
+    height: '100vmin',
+    maxWidth: '100vw',
+    maxHeight: '100vh',
+    objectFit: 'cover',
     transform: 'scaleX(-1)',
 };
 
