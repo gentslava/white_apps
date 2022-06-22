@@ -9,6 +9,8 @@ const videoStyle = {
     maxHeight: '100vh',
     objectFit: 'cover',
     transform: 'scaleX(-1)',
+    padding: '20px',
+    boxSizing: 'border-box',
 };
 
 const QRScanner = ({ setTextQR, scanning }) => {
