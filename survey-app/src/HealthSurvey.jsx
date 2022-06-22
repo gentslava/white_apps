@@ -83,7 +83,6 @@ export default () => {
                             </p>
                         </div>
                     </div>
-                    <div className='form__footer'>UNCLASSIFIED</div>
                 </div>
                 <input className='form__submit' type='submit' value='Готово' />
             </form>

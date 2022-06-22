@@ -84,7 +84,7 @@ const questionnaire = [
         required: true,
     },
     {
-        question: 'Ревматизм, ревма\u00ADтические поражения сердца, шумы в сердце, нерегулярный ритм',
+        question: 'Ревматизм, ревматические поражения сердца, шумы в сердце, нерегулярный ритм',
         type: 'radio',
         answers: [
             {
@@ -144,7 +144,7 @@ const questionnaire = [
         required: true,
     },
     {
-        question: 'Рак, радио\u00ADлогическое лечение или химиотерапия',
+        question: 'Рак, радиологическое лечение или химиотерапия',
         type: 'radio',
         answers: [
             {
@@ -189,7 +189,7 @@ const questionnaire = [
         required: true,
     },
     {
-        question: 'Почечные и моче\u00ADиспус\u00ADкательные проблемы, диализ',
+        question: 'Почечные и мочеиспускательные проблемы, диализ',
         type: 'radio',
         answers: [
             {
@@ -234,7 +234,7 @@ const questionnaire = [
         required: true,
     },
     {
-        question: 'Хирур\u00ADгические операции и переливания крови',
+        question: 'Хирургические операции и переливания крови',
         type: 'radio',
         answers: [
             {
@@ -264,7 +264,7 @@ const questionnaire = [
         required: true,
     },
     {
-        question: 'Лечение нижне\u00ADчелюст\u00ADного сустава',
+        question: 'Лечение нижнечелюстного сустава',
         type: 'radio',
         answers: [
             {
@@ -278,9 +278,6 @@ const questionnaire = [
         ],
         required: true,
     },
-    // {
-    //     break: true,
-    // },
     {
         question: 'Остеопороз',
         type: 'radio',
@@ -297,7 +294,7 @@ const questionnaire = [
         required: true,
     },
     {
-        question: 'Принимаете ли Вы бисфос\u00ADфонаты',
+        question: 'Принимаете ли Вы бисфосфонаты',
         type: 'radio',
         answers: [
             {
@@ -360,7 +357,7 @@ const questionnaire = [
         question: 'Бывают ли у вас проявления аллергии на:',
         multipleQuestions: [
             {
-                question: 'лекар\u00ADственные препараты',
+                question: 'лекарственные препараты',
                 type: 'radio',
                 answers: [
                     {
@@ -433,7 +430,7 @@ const questionnaire = [
         required: true,
     },
     {
-        question: 'Скрежетание зубами в ночное время/неконтро\u00ADлируемое сжатие челюстей в дневное время',
+        question: 'Скрежетание зубами в ночное время/неконтролируемое сжатие челюстей в дневное время',
         type: 'radio',
         answers: [
             {
@@ -448,7 +445,7 @@ const questionnaire = [
         required: true,
     },
     {
-        question: 'Кровото\u00ADчивость десен при чистке зубов',
+        question: 'Кровоточивость десен при чистке зубов',
         type: 'radio',
         answers: [
             {
@@ -463,7 +460,7 @@ const questionnaire = [
         required: true,
     },
     {
-        question: 'Чувстви\u00ADтельная реакция со стороны зубов, при употреблении холодных напитков или сладкого',
+        question: 'Чувствительная реакция со стороны зубов, при употреблении холодных напитков или сладкого',
         type: 'radio',
         answers: [
             {
@@ -478,7 +475,7 @@ const questionnaire = [
         required: true,
     },
     {
-        question: 'Наслед\u00ADственные заболевания',
+        question: 'Наследственные заболевания',
         type: 'radio',
         answers: [
             {
@@ -496,7 +493,7 @@ const questionnaire = [
         question: 'Наблюдались ли у Вас при предыдущем стоматологическом лечении:',
         multipleQuestions: [
             {
-                question: 'аллер\u00ADгические реакции',
+                question: 'аллергические реакции',
                 type: 'radio',
                 answers: [
                     {
@@ -510,7 +507,7 @@ const questionnaire = [
                 ],
             },
             {
-                question: 'продол\u00ADжительное кровотечение',
+                question: 'продолжительное кровотечение',
                 type: 'radio',
                 answers: [
                     {
@@ -524,7 +521,7 @@ const questionnaire = [
                 ],
             },
             {
-                question: 'какие-либо другие осложнения во время или после стомато\u00ADлогического лечения',
+                question: 'какие-либо другие осложнения во время или после стоматологического лечения',
                 type: 'radio',
                 answers: [
                     {
