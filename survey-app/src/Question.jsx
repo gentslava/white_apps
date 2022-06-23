@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import RadioButton from './RadioButton';
 
 const Question = ({ question, number, development }) => {
-    const [value, setValue] = useState(null);
+    const [value, setValue] = useState(null || (development && 0));
 
     if (question.break) {
         return (
@@ -31,7 +31,6 @@ const Question = ({ question, number, development }) => {
                                         required={!development && question.required}
                                         needsText={answer.needsText}
                                         title={answer.title}
-                                        development={development}
                                         // value={value}
                                         setValue={setValue}
                                     />
@@ -58,7 +57,6 @@ const Question = ({ question, number, development }) => {
                             name='select'
                             required={!development && question.required}
                             onChange={({ target }) => setValue(target.value)}
-                            defaultValue={development && 0}
                         >
                             <option hidden value='' />
                             {
@@ -76,7 +74,11 @@ const Question = ({ question, number, development }) => {
                             question.answers?.[value]
                             && !question.answers?.[value]?.needsText
                             && (
-                                <input type='text' value={question.answers?.[value].title} readOnly />
+                                <input
+                                    type='text'
+                                    value={question.answers?.[value].title}
+                                    readOnly
+                                />
                             )
                         }
                     </>
@@ -101,7 +103,6 @@ const Question = ({ question, number, development }) => {
                                                 required={!development && question.required}
                                                 needsText={answer.needsText}
                                                 title={answer.title}
-                                                development={development}
                                                 // value={value}
                                                 setValue={setValue}
                                             />

@@ -6,7 +6,6 @@ const RadioButton = ({
     index,
     required,
     title,
-    development,
     // value,
     setValue,
 }) => (
@@ -16,7 +15,6 @@ const RadioButton = ({
             id={`answer-${number}-${index}`}
             name={`question-${number}`}
             required={required}
-            checked={development}
             // checked={index === value}
             onChange={() => setValue(index)}
         />
