@@ -14,7 +14,8 @@ const style = {
 const Home = () => (
     <div style={style}>
         <Link to='/health-survey'>Анкета о здоровье</Link>
-        <Link to='/agreement' className='disabled'>Информированное добровольное согласие</Link>
+        <Link to='/agreement'>Информированное добровольное согласие</Link>
+        <div className='clear-button'>Очистить</div>
     </div>
 );
 export default Home;

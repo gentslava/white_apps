@@ -7,7 +7,7 @@ import Logo from './Logo';
 import questionnaire from './questionnaire';
 import Survey from './Survey';
 
-export default () => {
+export default ({ development }) => {
     const today = new Date();
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
@@ -51,7 +51,7 @@ export default () => {
                             <input
                                 type='text'
                                 placeholder='Фамилия Имя Отчество'
-                                required
+                                required={!development}
                                 size={'Фамилия Имя Отчество'.length - 1}
                                 onChange={({ target }) => {
                                     const minLength = 'Фамилия Имя Отчество'.length;
@@ -64,6 +64,7 @@ export default () => {
                     </p>
                     <Survey
                         questionnaire={questionnaire}
+                        development={development}
                     />
                     <div className='form__bottom'>
                         <p><b>Насколько мне известно, я верно ответил(а) на все вопросы анкеты</b></p>

@@ -88,6 +88,11 @@ a {
     p {
         text-align: initial;
 
+        &.form__additional-text {
+            margin-top: -40px;
+            text-align: end;
+        }
+
         @media print {
             margin-top: 0;
             margin-bottom: 5px;
@@ -318,5 +323,11 @@ select {
         + .form__subanswer label {
             display: none;
         }
+    }
+}
+
+@media print {
+    .break-page {
+        page-break-after: always;
     }
 }

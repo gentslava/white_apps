@@ -1,9 +1,9 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
-import Radio from './RadioButton';
+import RadioButton from './RadioButton';
 
-const Question = ({ question, number }) => {
+const Question = ({ question, number, development }) => {
     const [value, setValue] = useState(null);
 
     if (question.break) {
@@ -24,13 +24,14 @@ const Question = ({ question, number }) => {
                         <div className='form__table-answer'>
                             {
                                 question.answers.map((answer, index) => (
-                                    <Radio
+                                    <RadioButton
                                         key={`${number}-${index}`}
                                         number={number}
                                         index={index}
-                                        required={question.required}
+                                        required={!development && question.required}
                                         needsText={answer.needsText}
                                         title={answer.title}
+                                        development={development}
                                         // value={value}
                                         setValue={setValue}
                                     />
@@ -45,7 +46,7 @@ const Question = ({ question, number }) => {
                 && (
                     <input
                         type='text'
-                        required={question.required}
+                        required={!development && question.required}
                     />
                 )
             }
@@ -55,8 +56,9 @@ const Question = ({ question, number }) => {
                     <>
                         <select
                             name='select'
-                            required={question.required}
+                            required={!development && question.required}
                             onChange={({ target }) => setValue(target.value)}
+                            defaultValue={development && 0}
                         >
                             <option hidden value='' />
                             {
@@ -92,13 +94,14 @@ const Question = ({ question, number }) => {
                                 <div className='form__table-answer'>
                                     {
                                         subQuestion.answers.map((answer, subIndex) => (
-                                            <Radio
+                                            <RadioButton
                                                 key={`${number}-${index}-${subIndex}`}
                                                 number={`${number}-${index}`}
                                                 index={subIndex}
-                                                required={question.required}
+                                                required={!development && question.required}
                                                 needsText={answer.needsText}
                                                 title={answer.title}
+                                                development={development}
                                                 // value={value}
                                                 setValue={setValue}
                                             />
@@ -125,7 +128,7 @@ const Question = ({ question, number }) => {
                         <input
                             type='text'
                             name={`subanswer-${number}-${value}`}
-                            required
+                            required={!development}
                         />
                     </div>
                 )

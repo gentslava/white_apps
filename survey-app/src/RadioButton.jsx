@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-boolean-value */
 import React from 'react';
 
 const RadioButton = ({
@@ -5,6 +6,7 @@ const RadioButton = ({
     index,
     required,
     title,
+    development,
     // value,
     setValue,
 }) => (
@@ -14,6 +16,7 @@ const RadioButton = ({
             id={`answer-${number}-${index}`}
             name={`question-${number}`}
             required={required}
+            checked={development}
             // checked={index === value}
             onChange={() => setValue(index)}
         />

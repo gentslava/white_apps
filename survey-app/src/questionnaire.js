@@ -234,6 +234,9 @@ const questionnaire = [
         required: true,
     },
     {
+        break: true,
+    },
+    {
         question: 'Хирургические операции и переливания крови',
         type: 'radio',
         answers: [

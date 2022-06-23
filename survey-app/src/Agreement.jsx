@@ -27,7 +27,7 @@ export default () => {
             <form className='form' onSubmit={submitHandler}>
                 <div className='form__content' ref={componentRef}>
                     <Logo />
-                    <p>Приложение к медицинской карте</p>
+                    <p className='form__additional-text'>Приложение к медицинской карте</p>
                     <p>
                         Информированное добровольное согласие на виды медицинских вмешательств, включенные
                         в Перечень определенных видов медицинских вмешательств, на которые граждане дают
