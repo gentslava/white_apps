@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-boolean-value */
 import React from 'react';
 
 const RadioButton = ({

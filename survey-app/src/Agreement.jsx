@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
 import React from 'react';
 import Form from './Form';
