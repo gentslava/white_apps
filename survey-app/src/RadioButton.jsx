@@ -6,7 +6,7 @@ const RadioButton = ({
     index,
     required,
     title,
-    // value,
+    value,
     setValue,
 }) => (
     <>
@@ -15,7 +15,7 @@ const RadioButton = ({
             id={`answer-${number}-${index}`}
             name={`question-${number}`}
             required={required}
-            // checked={index === value}
+            checked={index === value}
             onChange={() => setValue(index)}
         />
         <label htmlFor={`answer-${number}-${index}`}>{title}</label>

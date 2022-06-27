@@ -13,6 +13,7 @@ import Agreement from './Agreement';
 const App = () => {
     const development = (process.env.NODE_ENV === 'development');
     console.log('Development', development);
+    const today = new Date();
 
     return (
         <Router>
@@ -20,15 +21,29 @@ const App = () => {
                 <Routes>
                     <Route
                         path='/'
-                        element={<Home development={development} />}
+                        element={(
+                            <Home
+                                development={development}
+                            />
+                        )}
                     />
                     <Route
                         path='/health-survey'
-                        element={<HealthSurvey development={development} />}
+                        element={(
+                            <HealthSurvey
+                                development={development}
+                                today={today}
+                            />
+                        )}
                     />
                     <Route
                         path='/agreement'
-                        element={<Agreement development={development} />}
+                        element={(
+                            <Agreement
+                                development={development}
+                                today={today}
+                            />
+                        )}
                     />
                 </Routes>
             </div>

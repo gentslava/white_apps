@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import RadioButton from './RadioButton';
 
 const Question = ({ question, number, development }) => {
-    const [value, setValue] = useState(null || (development && 0));
+    const [value, setValue] = useState(development ? 0 : null);
 
     if (question.break) {
         return (
@@ -31,7 +31,7 @@ const Question = ({ question, number, development }) => {
                                         required={!development && question.required}
                                         needsText={answer.needsText}
                                         title={answer.title}
-                                        // value={value}
+                                        value={value}
                                         setValue={setValue}
                                     />
                                 ))
