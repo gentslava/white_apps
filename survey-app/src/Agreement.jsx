@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
-import Form from './Form';
-import Logo from './Logo';
+import Form from './components/Form';
+import Logo from './components/Logo';
 
 export default ({ today }) => (
     <Form>

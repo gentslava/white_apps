@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
 import React from 'react';
-import Form from './Form';
-import Logo from './Logo';
+import Form from './components/Form';
+import Logo from './components/Logo';
 import questionnaire from './questionnaire';
-import Survey from './Survey';
+import Survey from './components/Survey';
 
 export default ({ development, today }) => (
     <Form>
