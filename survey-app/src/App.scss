@@ -326,6 +326,10 @@ select {
     }
 }
 
+.clear-button {
+    font-size: 20px;
+}
+
 @media print {
     .break-page {
         page-break-after: always;
