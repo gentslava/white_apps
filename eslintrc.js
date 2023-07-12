@@ -61,7 +61,14 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
-    'react/jsx-indent': ['error', 2],
+    'react/jsx-indent': [
+      'error',
+      2,
+      {
+        checkAttributes: true,
+        indentLogicalExpressions: true,
+      }
+    ],
     'react/jsx-indent-props': ['error', 2],
     'react/no-array-index-key': 'warn',
     'react/prop-types': 'off',
