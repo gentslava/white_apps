@@ -38,7 +38,7 @@ const App = () => {
   useEffect(() => {
     actionRSA(text, keys.openKey)
       .then((decrypted) => setResult(decrypted))
-      .catch((error) => console.log(error));
+      .catch(console.error);
   }, [text]);
 
   useEffect(() => {
