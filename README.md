@@ -1,1 +1,1 @@
-# WHITE-Dental-Clinic
+# WHITE Dental Clinic apps
