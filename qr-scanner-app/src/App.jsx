@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './App.scss';
-import keys from './keys';
 import QRScanner from './QRScanner';
 import actionRSA from './RSA';
 
@@ -9,7 +8,7 @@ const App = () => {
   const [result, setResult] = useState(null);
 
   useEffect(() => {
-    actionRSA(textQR, keys.privateKey)
+    actionRSA(textQR, process.env.PRIVATE_KEY)
       .then((decrypted) => setResult(decrypted))
       .catch(console.error);
   }, [textQR]);

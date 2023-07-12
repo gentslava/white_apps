@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import QRCode from 'qrcode';
 import './App.scss';
-import keys from './keys';
 import actionRSA from './RSA';
 
 const App = () => {
@@ -36,7 +35,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    actionRSA(text, keys.openKey)
+    actionRSA(text)
       .then((decrypted) => setResult(decrypted))
       .catch(console.error);
   }, [text]);
