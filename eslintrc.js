@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
+    es2022: true,
   },
   extends: [
     'plugin:react/recommended',
@@ -9,12 +9,18 @@ module.exports = {
   ],
   plugins: [
     'react',
+    "@typescript-eslint",
   ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
+    // parser: "@typescript-eslint/parser",
+    // parser: '@babel/eslint-parser',
     ecmaFeatures: {
       jsx: true,
+      legacyDecorators: true,
     },
-    ecmaVersion: 'latest',
+    // ecmaVersion: 'latest',
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
   rules: {
@@ -28,6 +34,7 @@ module.exports = {
     ],
     'jsx-quotes': ['error', 'prefer-single'],
     'linebreak-style': 'off',
+    'lines-between-class-members': 'off',
     'no-trailing-spaces': ['error', { skipBlankLines: true }],
     'object-curly-newline': [
       'error',
@@ -73,5 +80,6 @@ module.exports = {
     'react/no-array-index-key': 'warn',
     'react/prop-types': 'off',
     'react/button-has-type': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
 };

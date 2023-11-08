@@ -1,52 +1,24 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from 'react-router-dom';
+import React, { memo } from 'react';
 import './App.scss';
-import Home from './Home';
-import HealthSurvey from './HealthSurvey';
-import Agreement from './Agreement';
+import { Provider } from 'mobx-react';
+import HealthSurvey from './pages/HealthSurvey';
+import Agreement from './pages/Agreement';
+import Logo from './components/Logo';
+import userStore from './stores/userStore';
 
-const App = () => {
-  const development = (process.env.NODE_ENV === 'development');
-  console.log('Development', development);
-  const today = new Date();
+const documents = [
+  <HealthSurvey />,
+  <Agreement />,
+];
 
-  return (
-    <Router>
-      <div className='App'>
-        <Routes>
-          <Route
-            path='/'
-            element={(
-              <Home
-                development={development}
-              />
-            )}
-          />
-          <Route
-            path='/health-survey'
-            element={(
-              <HealthSurvey
-                development={development}
-                today={today}
-              />
-            )}
-          />
-          <Route
-            path='/agreement'
-            element={(
-              <Agreement
-                development={development}
-                today={today}
-              />
-            )}
-          />
-        </Routes>
-      </div>
-    </Router>
-  );
+const stores = {
+  userStore,
 };
-export default App;
+
+const App = () => (
+  <Provider {...stores}>
+    <Logo />
+    { documents.map((document) => document) }
+  </Provider>
+);
+export default memo(App);

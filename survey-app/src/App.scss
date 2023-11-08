@@ -43,6 +43,11 @@ a {
     }
 }
 
+svg {
+  width: 200px;
+  fill: white;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -216,11 +221,11 @@ a {
     }
 
     svg {
-        fill: white;
-        width: 200px;
+        display: none;
 
         @media print {
-            fill: black !important;
+            fill: black;
+            display: initial;
         }
     }
 }
@@ -275,6 +280,8 @@ a {
 }
 
 .form__bottom {
+    display: none;
+
     p {
         @media print {
             text-align: initial;
@@ -299,6 +306,10 @@ a {
         p {
             margin-bottom: 0;
         }
+    }
+
+    @media print {
+        display: initial;
     }
 }
 

@@ -1,14 +1,15 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
-import React from 'react';
-import Form from './components/Form';
-import Logo from './components/Logo';
-import questionnaire from './questionnaire';
-import Survey from './components/Survey';
+import React, { memo } from 'react';
+import { inject, observer } from 'mobx-react';
+import Form from '../components/Form';
+import questionnaire from '../resources/questionnaire';
+import Survey from '../components/Survey';
 
-export default ({ development, today }) => (
+@inject("userStore")
+@observer
+const HealthSurvey = () => (
   <Form>
-    <Logo />
     <h1>Анкета о вашем здоровье</h1>
     <p>Успешность стоматологического лечения может зависеть от наличия и степени развития общих заболеваний организма.</p>
     <p>
@@ -31,7 +32,7 @@ export default ({ development, today }) => (
         <input
           type='text'
           placeholder='Фамилия Имя Отчество'
-          required={!development}
+          // TODO: rewrite  required={!development}
           size={'Фамилия Имя Отчество'.length - 1}
           onChange={({ target }) => {
             const minLength = 'Фамилия Имя Отчество'.length;
@@ -44,25 +45,10 @@ export default ({ development, today }) => (
     </p>
     <Survey
       questionnaire={questionnaire}
-      development={development}
     />
     <div className='form__bottom'>
       <p><b>Насколько мне известно, я верно ответил(а) на все вопросы анкеты</b></p>
-      <p className='form__bottom-data'>
-        Дата
-        {' '}
-        {today.toLocaleDateString('ru-RU')}
-      </p>
-      <div>
-        <p>
-          Подпись врача &nbsp;
-          <span>____________/___________________ /</span>
-        </p>
-        <p>
-          Подпись &nbsp;
-          <span>____________/___________________ /</span>
-        </p>
-      </div>
     </div>
   </Form>
 );
+export default memo(HealthSurvey);

@@ -1,11 +1,9 @@
 /* eslint-disable max-len */
-import React from 'react';
-import Form from './components/Form';
-import Logo from './components/Logo';
+import React, { memo } from 'react';
+import Form from '../components/Form';
 
-export default ({ today }) => (
+const Agreement = () => (
   <Form>
-    <Logo />
     <p className='form__additional-text'>Приложение к медицинской карте</p>
     <p>
       Информированное добровольное согласие на виды медицинских вмешательств, включенные
@@ -18,22 +16,6 @@ export default ({ today }) => (
       сообщена вся необходимая информация о моем предстоящем лечении и что я согласен (согласна) с названными мне условиями проведения лечения.
       Данный документ является необходимым предварительным условием (разрешением) начала медицинского вмешательства.
     </p>
-    <div className='form__bottom'>
-      <p className='form__bottom-data'>
-        Дата
-        {' '}
-        {today.toLocaleDateString('ru-RU')}
-      </p>
-      <div>
-        <p>
-          Подпись врача &nbsp;
-          <span>____________/___________________ /</span>
-        </p>
-        <p>
-          Подпись &nbsp;
-          <span>____________/___________________ /</span>
-        </p>
-      </div>
-    </div>
   </Form>
 );
+export default memo(Agreement);

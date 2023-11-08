@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "experimentalDecorators": true,
+    "baseUrl": "src"
+  },
+  "exclude": ["node_modules"],
+  "include": ["src"]
+}

@@ -2,7 +2,9 @@
 import React, { useState } from 'react';
 import RadioButton from './RadioButton';
 
-const Question = ({ question, number, development }) => {
+const Question = ({ question, number }) => {
+  // TODO: remove
+  const development = true;
   const [value, setValue] = useState(development ? 0 : null);
 
   if (question.break) {

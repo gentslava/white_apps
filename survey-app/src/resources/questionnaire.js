@@ -1,4 +1,4 @@
-const questionnaire = [
+export default [
   {
     question: 'Дата последнего визита к стоматологу?',
     type: 'text',
@@ -546,4 +546,3 @@ const questionnaire = [
     required: false,
   },
 ];
-export default questionnaire;
