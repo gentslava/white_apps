@@ -2,7 +2,7 @@ const emailInput = '#field_email';
 const passwordInput = '#field_password';
 const submitButton = 'input[value="Log in to OK"][type="submit"]';
 
-module.exports = (account) => new Promise(async (resolve, reject) => {
+module.exports = (page, account) => new Promise(async (resolve, reject) => {
   await page.waitForSelector(
     emailInput,
     { visible: true, timeout: 0 }

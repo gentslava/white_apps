@@ -1,4 +1,6 @@
 const puppeteer = require('puppeteer');
+const okLogin = require('./okLogin');
+const { parseOKFile } = require('./parser');
 
 const url = 'https://ya.ru/';
 const yaSearch = '[aria-label="Поиск в интернете"] #text';
@@ -14,6 +16,13 @@ const spider = async (url) => {
     await page.goto(url, { waitUntil: 'networkidle2' });
     await page.waitForSelector(yaSearch);
     await setTimeout(() => null, 1500);
+
+    const accounts = parseOKFile('./accounts/ok.txt');
+    console.log(accounts);
+
+    browser.waitForTarget(
+      (target) => /ok\.ru/.test(target.url())
+    ).then(async (target) => okLogin(await target.page(), accounts[0]));
 
     page.waitForSelector(
       okSuggestion,
@@ -36,7 +45,11 @@ const spider = async (url) => {
         page.click(okLink);
       }, 1000);
     });
-    browser.close();
+
+
+    // okLogin()
+
+    // browser.close();
 };
 
 spider(url);
