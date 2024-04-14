@@ -15,6 +15,7 @@ module.exports = (account) => new Promise(async (resolve, reject) => {
         isMobile: true,
       },
       args: [
+        '--no-sandbox',
         '--proxy-server=pproxy.site:10487',
       ],
     });
