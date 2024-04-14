@@ -8,7 +8,7 @@ const spider = async () => {
     console.log(`Vote for ${account.login}`);
     await okVote(account)
       .then(() => editOKFile('./accounts/ok.txt', account.login))
-      .catch(console.log);
+      .catch(console.error);
     console.log('Done!');
     const timeout = 120 + Math.random() * 120;
     console.log(`Wait for ${timeout}s`);
