@@ -2,7 +2,7 @@ module.exports = (page, account) => new Promise(async (resolve, reject) => {
   await page.waitForSelector(
     '.votes-form__wrapper input',
     { visible: true, timeout: 0 }
-  );
+  ).catch(reject);
   await page.click('.votes-form__wrapper input');
   await page.type('.votes-form__wrapper input', 'WHITE provenance', { delay: 300, });
   await page.click('.votes-form__wrapper .votes-form__submit');
