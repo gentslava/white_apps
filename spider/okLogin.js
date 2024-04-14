@@ -14,7 +14,11 @@ module.exports = (page, account) => new Promise(async (resolve, reject) => {
   await page.click(passwordInput),
   await page.type(passwordInput, account.password, { delay: 300, }),
 
-  await page.click(submitButton);
+  await Promise.all([
+    page.click(submitButton),
+    page.waitForNavigation({waitUntil: 'networkidle2'})
+  ]);
+
   resolve({
     img: 'yes',
   });
