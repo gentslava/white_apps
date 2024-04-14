@@ -22,11 +22,12 @@ module.exports = (account) => new Promise(async (resolve, reject) => {
     await page.authenticate({username:'ehKEG7', password:'KEk4atEz5DAd'});
 
     console.log(device);
-    await page.goto('https://ya.ru/', { waitUntil: 'networkidle2' }).catch(async () => await page.reload());
-    await page.goto('https://myip.ru/', { waitUntil: 'domcontentloaded' }).catch(async () => await page.reload());
+    await page.goto('https://myip.ru/', { waitUntil: 'domcontentloaded' });
     const element = await page.waitForSelector('#ipcontent td', { visible: true });
     const ip = await page.evaluate((el) => el.textContent, element);
     console.log(ip);
+
+    await page.goto('https://ya.ru/', { waitUntil: 'networkidle2' });
 
     await page.goto('https://ok.ru/', { waitUntil: 'networkidle2' }).catch(async () => await page.reload());
     await okLogin(page, account);
