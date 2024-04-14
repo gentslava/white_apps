@@ -8,8 +8,7 @@ module.exports = (account) => new Promise(async (resolve, reject) => {
   let browser = null;
   try {
     browser = await puppeteer.launch({
-      headless: false, // false: enables one to view the Chrome instance in action
-      // defaultViewport: null, // (optional) useful only in non-headless mode
+      headless: true, // false: enables one to view the Chrome instance in action
       defaultViewport: {
         width: 375,
         height: 667,
