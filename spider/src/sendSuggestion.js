@@ -15,7 +15,7 @@ module.exports = (page, account) => new Promise(async (resolve, reject) => {
     document.querySelector('.answer-head').scrollIntoView();
   });
   await page.screenshot({
-    path: `./screenshots/${account}.jpg`
+    path: `screenshots/${account}.jpg`
   });
   resolve();
 });
