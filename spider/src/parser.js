@@ -14,6 +14,7 @@ function parseOKFile(filename) {
         surname,
         url,
       };
+      // @ts-ignore
       if (status != 0 && status != 1) accounts.push(account);
     });
 

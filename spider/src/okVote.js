@@ -15,7 +15,7 @@ module.exports = (account) => new Promise(async (resolve, reject) => {
         '--lang=ru-RU,ru'
       ],
     });
-    const device = puppeteer.KnownDevices[devices[parseInt(devices.length * Math.random())]];
+    const device = puppeteer.KnownDevices[devices[Math.floor(devices.length * Math.random())]];
 
     let page = await browser.newPage();
     await page.emulate(device);
@@ -54,7 +54,7 @@ module.exports = (account) => new Promise(async (resolve, reject) => {
       sendSuggestion(page, account.login).then(async () => {
         await browser.close();
         resolve();
-      }).catch((e) => reject('Catched exception for sendSuggestion:', e));
+      }).catch(reject);
     }).catch(async (e) => {
       await new Promise((resolve) => setTimeout(resolve, 4000));
       const page = await browser.newPage();
@@ -64,7 +64,7 @@ module.exports = (account) => new Promise(async (resolve, reject) => {
       sendSuggestion(page, account.login).then(async () => {
         await browser.close();
         resolve();
-      }).catch((e) => reject('Catched exception for sendSuggestion:', e));
+      }).catch(reject);
     });
 
     await page.waitForSelector(

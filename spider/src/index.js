@@ -1,3 +1,5 @@
+import { tBot } from './telegram-bot/bot';
+
 const { parseOKFile, editOKFile } = require('./parser');
 const okVote = require('./okVote');
 
@@ -6,6 +8,7 @@ const spider = async () => {
 
   for (const account of accounts) {
     console.log(`Vote for ${account.login}`);
+    new tBot().sendMessage(null, `Vote for ${account.login}`);
     await okVote(account)
       .then(() => editOKFile('accounts/ok.txt', account.login, '|0'))
       .catch((e) => {
@@ -21,4 +24,4 @@ const spider = async () => {
   }
 };
 
-spider();
+export default spider;
