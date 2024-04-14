@@ -10,8 +10,9 @@ const spider = async () => {
       .then(() => editOKFile('./accounts/ok.txt', account.login))
       .catch(console.log);
     console.log('Done!');
-    console.log('__________________');
-    await new Promise((resolve) => setTimeout(resolve, 180 * 1000));
+    const timeout = 120 + Math.random * 120;
+    console.log(`Wait for ${timeout}s`);
+    await new Promise((resolve) => setTimeout(resolve, timeout * 1000));
   }
 };
 
