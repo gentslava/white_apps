@@ -20,7 +20,7 @@ module.exports = (account) => new Promise(async (resolve, reject) => {
       ],
     });
     let page = await browser.newPage();
-    // await page.authenticate({username:'ehKEG7', password:'KEk4atEz5DAd'});
+    await page.authenticate({username:'ehKEG7', password:'KEk4atEz5DAd'});
 
     await page.goto('https://ok.ru/', { waitUntil: 'networkidle2' });
     await okLogin(page, account);
