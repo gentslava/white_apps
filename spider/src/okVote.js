@@ -2,58 +2,64 @@ const puppeteer = require('puppeteer');
 const okLogin = require('./okLogin');
 const sendSuggestion = require('./sendSuggestion');
 
-const iPhone = puppeteer.KnownDevices['iPhone 13'];
+const devices = Object.keys(puppeteer.KnownDevices).filter((device) => /iPhone|Pixel|Galaxy/.test(device) && !/landscape/.test(device));
 
 module.exports = (account) => new Promise(async (resolve, reject) => {
   let browser = null;
   try {
     browser = await puppeteer.launch({
-      headless: true, // false: enables one to view the Chrome instance in action
-      defaultViewport: {
-        width: 375,
-        height: 667,
-        isMobile: true,
-      },
+      headless: true,
       args: [
         '--no-sandbox',
         '--proxy-server=pproxy.site:10487',
+        '--lang=ru-RU,ru'
       ],
     });
+    const device = puppeteer.KnownDevices[devices[parseInt(devices.length * Math.random())]];
+
     let page = await browser.newPage();
+    await page.emulate(device);
     await page.authenticate({username:'ehKEG7', password:'KEk4atEz5DAd'});
 
-    await page.goto('https://ok.ru/', { waitUntil: 'networkidle2' });
+    console.log(device);
+    await page.goto('https://ya.ru/', { waitUntil: 'networkidle2' }).catch(async () => await page.reload());
+    await page.goto('https://myip.ru/', { waitUntil: 'domcontentloaded' }).catch(async () => await page.reload());
+    const element = await page.waitForSelector('#ipcontent td', { visible: true });
+    const ip = await page.evaluate((el) => el.textContent, element);
+    console.log(ip);
+
+    await page.goto('https://ok.ru/', { waitUntil: 'networkidle2' }).catch(async () => await page.reload());
     await okLogin(page, account);
 
     page = await browser.newPage();
-    await page.emulate(iPhone);
+    await page.emulate(device);
 
-    await page.goto('https://ngs.ru/award/votes/medicine/', { waitUntil: 'networkidle2' });
-    await page.click('.auth__btn');
+    await page.goto('https://ngs.ru/award/votes/medicine/', { waitUntil: 'load' }).catch(async () => await page.reload());
+    await page.tap('.auth__btn');
 
     browser.waitForTarget(
-      (target) => /connect\.ok\.ru\/oauth\/authorize/.test(target.url())
+      (target) => /connect\.ok\.ru\//.test(target.url())
     ).then(async (target) => {
       let page = await target.page();
-      await page.click('button.form-actions_yes[name="button_accept_request"]');
+      await page.emulate(device);
+      await page.reload();
+      await page.tap('button.form-actions_yes[name="button_accept_request"]');
 
       await new Promise((resolve) => setTimeout(resolve, 4000));
       page = await browser.newPage();
-      await page.emulate(iPhone);
+      await page.emulate(device);
 
-      await page.goto('https://ngs.ru/award/votes/medicine/', { waitUntil: 'networkidle2' });
+      await page.goto('https://ngs.ru/award/votes/medicine/', { waitUntil: 'load' });
       sendSuggestion(page, account.login).then(async () => {
         await browser.close();
         resolve();
       }).catch((e) => reject('Catched exception for sendSuggestion:', e));
     }).catch(async (e) => {
-      // console.log('Catched exception for waitForTarget:', e);
-
       await new Promise((resolve) => setTimeout(resolve, 4000));
       const page = await browser.newPage();
-      await page.emulate(iPhone);
+      await page.emulate(device);
 
-      await page.goto('https://ngs.ru/award/votes/medicine/', { waitUntil: 'networkidle2' });
+      await page.goto('https://ngs.ru/award/votes/medicine/', { waitUntil: 'load' });
       sendSuggestion(page, account.login).then(async () => {
         await browser.close();
         resolve();
@@ -64,7 +70,7 @@ module.exports = (account) => new Promise(async (resolve, reject) => {
       '.social-list .social.ok',
       { visible: true, timeout: 0 }
     );
-    await page.click('.social-list .social.ok');
+    await page.tap('.social-list .social.ok');
   } catch (e) {
     browser && await browser.close();
     reject(e);
