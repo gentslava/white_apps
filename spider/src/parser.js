@@ -14,13 +14,13 @@ function parseOKFile(filename) {
         surname,
         url,
       };
-      if (status != 0) accounts.push(account);
+      if (status != 0 && status != 1) accounts.push(account);
     });
 
     return accounts;
 }
 
-function editOKFile(filename, searchValue) {
+function editOKFile(filename, searchValue, addValue) {
   // Чтение файла
   fs.readFile(filename, 'utf8', (err, data) => {
     if (err) {
@@ -38,8 +38,8 @@ function editOKFile(filename, searchValue) {
       return;
     }
 
-    // Добавление '|0' к найденной строке
-    lines[index] += '|0';
+    // Добавление addValue к найденной строке
+    lines[index] += addValue;
 
     // Обновление файла с измененными данными
     fs.writeFile(filename, lines.join('\n'), 'utf8', (err) => {
