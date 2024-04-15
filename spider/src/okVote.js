@@ -25,7 +25,7 @@ module.exports = (account) => new Promise(async (resolve, reject) => {
     await page.goto('https://myip.ru/', { waitUntil: 'domcontentloaded' });
     const element = await page.waitForSelector('#ipcontent td', { visible: true });
     const ip = await page.evaluate((el) => el.textContent, element);
-    logger(`${device.name} ${ip}`);
+    logger(`Устройство: ${device.name}\nIP: ${ip}`);
 
     await page.goto('https://ya.ru/', { waitUntil: 'networkidle2' });
 
