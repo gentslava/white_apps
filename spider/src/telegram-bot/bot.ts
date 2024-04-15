@@ -12,12 +12,17 @@ export class tBot {
     this.bot = new TelegramBot(token, {polling: true});
     this.bot.on('message', (msg) => {
       console.log(msg);
+
+      if (msg.text === '/votes@ngs_vote_bot') {
+        const files = fs.readdirSync('./screenshots');
+        this.bot.sendMessage(this.chatId, (files.length + 6).toString());
+      }
       // this.chatId = msg.chat.id;
     });
   }
 
   sendMessage(imagePath?: string | null, message?: string | null) {
-    this.bot.sendMessage(this.chatId, message)
+    this.bot.sendMessage(this.chatId, message);
     // return this.send(imagePath, message);
   }
 
