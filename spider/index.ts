@@ -1,3 +1,9 @@
+import { logger } from "./src/logger";
 import spider from "./src/index";
 
-spider();
+try {
+  spider();
+} catch (e) {
+  logger(e);
+  logger('Голосование остановлено');
+}

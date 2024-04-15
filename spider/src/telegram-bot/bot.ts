@@ -12,7 +12,7 @@ export class tBot {
     this.bot = new TelegramBot(token, {polling: true});
     this.bot.on('message', (msg) => {
       console.log(msg);
-      this.chatId = msg.chat.id;
+      // this.chatId = msg.chat.id;
     });
   }
 

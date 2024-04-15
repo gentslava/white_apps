@@ -7,7 +7,7 @@ const spider = async () => {
   const accounts = parseOKFile('accounts/ok.txt');
 
   for (const account of accounts) {
-    logger(`Vote for ${account.login}`);
+    logger(`Голосование с аккаунта ${account.login}`);
     await okVote(account)
       .then(() => editOKFile('accounts/ok.txt', account.login, '|0'))
       .catch((e) => {
