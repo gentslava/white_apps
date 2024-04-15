@@ -1,4 +1,4 @@
-import { tBot } from './telegram-bot/bot';
+import { logger } from './logger';
 
 const { parseOKFile, editOKFile } = require('./parser');
 const okVote = require('./okVote');
@@ -7,12 +7,11 @@ const spider = async () => {
   const accounts = parseOKFile('accounts/ok.txt');
 
   for (const account of accounts) {
-    console.log(`Vote for ${account.login}`);
-    new tBot().sendMessage(null, `Vote for ${account.login}`);
+    logger(`Vote for ${account.login}`);
     await okVote(account)
       .then(() => editOKFile('accounts/ok.txt', account.login, '|0'))
       .catch((e) => {
-        console.error(e);
+        logger(e);
         if (e.status === 'blocked') {
           editOKFile('accounts/ok.txt', account.login, '|1');
         }
@@ -20,8 +19,8 @@ const spider = async () => {
           editOKFile('accounts/ok.txt', account.login, '|2');
         }
       });
-    console.log('Done!');
-    const timeout = 120 + Math.random() * 120;
+
+    const timeout = Math.round(120 + Math.random() * 120);
     console.log(`Wait for ${timeout}s`);
     await new Promise((resolve) => setTimeout(resolve, timeout * 1000));
   }

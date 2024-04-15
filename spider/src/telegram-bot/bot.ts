@@ -2,7 +2,6 @@ import "dotenv/config";
 import fs from "fs";
 import TelegramBot from "node-telegram-bot-api";
 
-
 const token: string = process.env.BOT_TOKEN;
 
 export class tBot {
@@ -11,10 +10,6 @@ export class tBot {
 
   constructor() {
     this.bot = new TelegramBot(token, {polling: true});
-    console.log(this.bot);
-    console.log(this.chatId);
-    
-
     this.bot.on('message', (msg) => {
       console.log(msg);
       this.chatId = msg.chat.id;
@@ -22,8 +17,8 @@ export class tBot {
   }
 
   sendMessage(imagePath?: string | null, message?: string | null) {
-    // this.bot.sendMessage(this.chatId, message)
-    return this.send(imagePath, message);
+    this.bot.sendMessage(this.chatId, message)
+    // return this.send(imagePath, message);
   }
 
   private sendPhoto(imagePath: string) {
@@ -34,7 +29,7 @@ export class tBot {
       console.log('Error:', err);
     });
   }
-  
+
   private sendTextMessage(message: string) {
     this.bot.sendMessage(this.chatId, message).then(res => {
       console.log('message sent successfully!');
@@ -46,7 +41,7 @@ export class tBot {
 
   private send(imagePath?: string | null, message?: string | null) {
     console.log('send', imagePath, message);
-    
+
     if (typeof imagePath === 'string' && typeof message === 'string') {
       this.sendTextMessage(message);
       this.sendPhoto(imagePath);
@@ -58,5 +53,5 @@ export class tBot {
       this.sendTextMessage(message);
     }
   }
-} 
+}
 

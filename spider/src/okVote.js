@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const okLogin = require('./okLogin');
 const sendSuggestion = require('./sendSuggestion');
+const { logger } = require('./logger');
 
 const devices = Object.keys(puppeteer.KnownDevices).filter((device) => /iPhone|Pixel|Galaxy/.test(device) && !/landscape/.test(device));
 
@@ -21,11 +22,10 @@ module.exports = (account) => new Promise(async (resolve, reject) => {
     await page.emulate(device);
     await page.authenticate({username:'ehKEG7', password:'KEk4atEz5DAd'});
 
-    console.log(device);
     await page.goto('https://myip.ru/', { waitUntil: 'domcontentloaded' });
     const element = await page.waitForSelector('#ipcontent td', { visible: true });
     const ip = await page.evaluate((el) => el.textContent, element);
-    console.log(ip);
+    logger(`${device.name} ${ip}`);
 
     await page.goto('https://ya.ru/', { waitUntil: 'networkidle2' });
 
