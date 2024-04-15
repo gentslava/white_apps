@@ -5,53 +5,58 @@ import TelegramBot from "node-telegram-bot-api";
 
 const token: string = process.env.BOT_TOKEN;
 
-const bot = new TelegramBot(token, {polling: true});
+export class tBot {
+  bot: TelegramBot;
+  chatId: TelegramBot.ChatId = process.env.CHAT_ID;
 
-let chatId: number = 685732071;
+  constructor() {
+    this.bot = new TelegramBot(token, {polling: true});
+    console.log(this.bot);
+    console.log(this.chatId);
+    
 
+    this.bot.on('message', (msg) => {
+      console.log(msg);
+      this.chatId = msg.chat.id;
+    });
+  }
 
-bot.on('message', (msg) => {
-  console.log(msg);
-  chatId = msg.chat.id;
-});
+  sendMessage(imagePath?: string | null, message?: string | null) {
+    // this.bot.sendMessage(this.chatId, message)
+    return this.send(imagePath, message);
+  }
 
-export class tBot { 
+  private sendPhoto(imagePath: string) {
+    this.bot.sendPhoto(this.chatId, fs.createReadStream(imagePath)).then(res => {
+      console.log('image sent successfully!');
+    })
+    .catch(err => {
+      console.log('Error:', err);
+    });
+  }
+  
+  private sendTextMessage(message: string) {
+    this.bot.sendMessage(this.chatId, message).then(res => {
+      console.log('message sent successfully!');
+    })
+    .catch(err => {
+      console.log('Error:', err);
+    });
+  }
 
-  sendMessage(imagePath?: string | null, message?: string | null){ 
-    return send(imagePath, message);
+  private send(imagePath?: string | null, message?: string | null) {
+    console.log('send', imagePath, message);
+    
+    if (typeof imagePath === 'string' && typeof message === 'string') {
+      this.sendTextMessage(message);
+      this.sendPhoto(imagePath);
+    }
+    if (typeof imagePath === 'string' && typeof message === null) {
+      this.bot.sendPhoto(this.chatId, fs.createReadStream(imagePath));
+    }
+    if (typeof imagePath === null && typeof message === 'string') {
+      this.sendTextMessage(message);
+    }
   }
 } 
 
-
-function send(imagePath?: string | null, message?: string | null) {
-  if (typeof imagePath === 'string' && typeof message === 'string') {
-    sendTextMessage(message);
-    sendPhoto(imagePath);
-
-  }
-  if (typeof imagePath === 'string' && typeof message === null) {
-    bot.sendPhoto(chatId, fs.createReadStream(imagePath));
-  }
-  if (typeof imagePath === null && typeof message === 'string') {
-    sendTextMessage(message);
-  }
-
-}
-
-function sendPhoto(imagePath: string) {
-  bot.sendPhoto(chatId, fs.createReadStream(imagePath)).then(res => {
-    console.log('image sent successfully!');
-  })
-  .catch(err => {
-    console.log('Error:', err);
-  });
-}
-
-function sendTextMessage(message: string) {
-  bot.sendMessage(chatId, message).then(res => {
-    console.log('message sent successfully!');
-  })
-  .catch(err => {
-    console.log('Error:', err);
-  });
-}
