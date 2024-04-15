@@ -23,7 +23,7 @@ const spider = async () => {
         }
       });
 
-    const timeout = Math.round(120 + Math.random() * 240);
+    const timeout = Math.round(180 + Math.random() * 240);
     console.log(`Wait for ${timeout}s`);
     await new Promise((resolve) => setTimeout(resolve, timeout * 1000));
   }
