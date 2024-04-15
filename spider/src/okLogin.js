@@ -3,6 +3,7 @@ const emailInput = '#field_email,#field_login';
 const passwordInput = '#field_password';
 const submitButton = 'input[type="submit"]';
 const blocked = '#hook_Block_MainContainer,[data-logloc="accountBlockedByAdminStub"]';
+const captcha = '#boxPage[data-logloc="verifyCaptchaStart"]';
 
 module.exports = (page, account) => new Promise(async (resolve, reject) => {
   await page.waitForSelector(
@@ -30,6 +31,10 @@ module.exports = (page, account) => new Promise(async (resolve, reject) => {
 
   if (await page.$(blocked)) reject({
     status: 'blocked',
+  });
+
+  if (await page.$(captcha)) reject({
+    status: 'captcha',
   });
 
   resolve({

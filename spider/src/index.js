@@ -16,6 +16,9 @@ const spider = async () => {
         if (e.status === 'blocked') {
           editOKFile('accounts/ok.txt', account.login, '|1');
         }
+        if (e.status === 'captcha') {
+          editOKFile('accounts/ok.txt', account.login, '|2');
+        }
       });
     console.log('Done!');
     const timeout = 120 + Math.random() * 120;
