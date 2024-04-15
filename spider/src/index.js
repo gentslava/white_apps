@@ -9,7 +9,10 @@ const spider = async () => {
   for (const account of accounts) {
     logger(`Голосование с аккаунта ${account.login}`);
     await okVote(account)
-      .then(() => editOKFile('accounts/ok.txt', account.login, '|0'))
+      .then(() => {
+        logger('Успех!');
+        editOKFile('accounts/ok.txt', account.login, '|0');
+      })
       .catch((e) => {
         logger(e);
         if (e.status === 'blocked') {
