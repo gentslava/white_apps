@@ -8,7 +8,9 @@ RUN apt update \
 
 COPY src src
 
-COPY package*.json .
+COPY *.ts .
+COPY *.json .
+COPY .env .
 
 RUN npm ci
 
