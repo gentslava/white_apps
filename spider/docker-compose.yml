@@ -1,0 +1,8 @@
+services:
+  white-spider:
+    image: white-spider:latest
+    container_name: white-spider
+    volumes:
+      - ./accounts:/app/accounts
+      - ./screenshots:/app/screenshots
+    restart: unless-stopped
