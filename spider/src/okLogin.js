@@ -26,18 +26,21 @@ module.exports = (page, account) => new Promise(async (resolve, reject) => {
 
   await Promise.all([
     page.tap(submitButton),
-    page.waitForNavigation({ waitUntil: 'networkidle2' })
+    page.waitForNavigation({ waitUntil: 'networkidle2' }),
+    new Promise((resolve) => setTimeout(resolve, 5000)),
   ]);
 
-  if (await page.$(blocked)) reject({
-    status: 'blocked',
-  });
+  const blockedEl = await page.$(blocked);
+  if (blockedEl) {
+    return reject({ status: 'blocked', });
+  }
 
-  if (await page.$(captcha)) reject({
-    status: 'captcha',
-  });
+  const captchaEl = await page.$(captcha);
+  if (captchaEl) {
+    return reject({ status: 'captcha', });
+  }
 
-  resolve({
+  return resolve({
     img: 'yes',
     status: 'alive',
   });
