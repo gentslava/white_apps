@@ -541,6 +541,66 @@ const questionnaire = [
     required: true,
   },
   {
+    question: 'Эмоциональные проблемы',
+    type: 'radio',
+    answers: [
+      {
+        title: 'Да',
+        needsText: false,
+      },
+      {
+        title: 'Нет',
+        needsText: false,
+      },
+    ],
+    required: true,
+  },
+  {
+    question: 'Неврологическое лечение',
+    type: 'radio',
+    answers: [
+      {
+        title: 'Да',
+        needsText: false,
+      },
+      {
+        title: 'Нет',
+        needsText: false,
+      },
+    ],
+    required: true,
+  },
+  {
+    question: 'Психиатрическое лечение',
+    type: 'radio',
+    answers: [
+      {
+        title: 'Да',
+        needsText: false,
+      },
+      {
+        title: 'Нет',
+        needsText: false,
+      },
+    ],
+    required: true,
+  },
+  {
+    question: 'Прием антидепрессантов',
+    type: 'radio',
+    answers: [
+      {
+        title: 'Да',
+        needsText: false,
+      },
+      {
+        title: 'Нет',
+        needsText: false,
+      },
+    ],
+    required: true,
+  },
+  {
     question: 'Добавьте то, что Вы считаете важным',
     type: 'text',
     required: false,

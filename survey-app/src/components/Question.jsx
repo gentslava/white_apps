@@ -102,8 +102,7 @@ const Question = ({ question, number, development }) => {
                         required={!development && question.required}
                         needsText={answer.needsText}
                         title={answer.title}
-                        // value={value}
-                        setValue={setValue}
+                        development={development}
                       />
                     ))
                   }
